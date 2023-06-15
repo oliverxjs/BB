@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('/home/moises/desafiomarcus0');
+const db = new sqlite3.Database('/home/moises/desafiomarcus20');
 
-const insertQuery = `INSERT INTO CANTOR_BANDA (nome, tipo) VALUES ('xpto', '1')`;
+const insertQuery = `INSERT INTO CANTOR_BANDA (nome, tipo) VALUES ('tecnicamente', '1')`;
 db.run(insertQuery, function (err) { 
   if (err) {
     console.error(err.message);

@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('/home/moises/desafiomarcus0');
 
-const updateQuery = `UPDATE CANTOR_BANDA SET NOME = 'ttt'`
+const updateQuery = `UPDATE CANTOR_BANDA SET NOME = 'marcus'`
  db.run(updateQuery, function (err) { 
  if (err) {
    console.error(err.message);
