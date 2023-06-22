@@ -1,10 +1,10 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('/home/moises/desafiomarcus20');
 
-function ApagarTabela(nomeTabela, nomeColuna, valor){
- const deleteQuery = `DELETE FROM ${nomeTabela} WHERE ${nomeColuna} = ?`;
+function apagar(codigo){
+ const deleteQuery = `DELETE FROM CANTOR_BANDA WHERE codigo = ?`;
  db.serialize(() => {
-  db.run(deleteQuery, [valor], (err) => {
+  db.run(deleteQuery, [codigo], (err) => {
     if (err) {
       console.error('ixi paizao deu erro', err);
     } else {
@@ -14,7 +14,7 @@ function ApagarTabela(nomeTabela, nomeColuna, valor){
 
 })}
 
-function selecionar(){
+function selecionarTudo(){
   db.serialize(() => {
     db.each("SELECT * FROM CANTOR_BANDA", (err, row) => {
       if (err) {
@@ -25,9 +25,9 @@ function selecionar(){
   });
 }
 
-function inserirDados(nomeTabela, valorColuna1, valorColuna2) {
-  const insert = `INSERT INTO ${nomeTabela} (nome, tipo) VALUES (?, ?)`;
-  db.run(insert, [valorColuna1, valorColuna2], function (err) {
+function inserir(nome, tipo) {
+  const insert = `INSERT INTO CANTOR_BANDA (nome, tipo) VALUES (?, ?)`;
+  db.run(insert, [nome, tipo], function (err) {
     if (err) {
       console.error('deu ruim meu mano:', err);
     } else {
@@ -38,9 +38,9 @@ function inserirDados(nomeTabela, valorColuna1, valorColuna2) {
   const nome = 'kyan';
   const tipo = '1';
 
-  function atualizarDados(nomeTabela, id, valorColuna1, valorColuna2) {
-    const atualizar = `UPDATE ${nomeTabela} SET nome = ?, tipo = ? WHERE codigo = ?`;
-    db.run(atualizar, [valorColuna1, valorColuna2, id], function (err) {
+  function atualizar(codigo, nome, tipo) {
+    const atualizar = `UPDATE CANTOR_BANDA SET nome = ?, tipo = ? WHERE codigo = ?`;
+    db.run(atualizar, [nome, tipo, codigo], function (err) {
       if (err) {
         console.error('deu ruim meu mano:', err);
       } else {
@@ -53,20 +53,13 @@ function inserirDados(nomeTabela, valorColuna1, valorColuna2) {
     const atualizatipo = '1';
     
 
-atualizarDados('CANTOR_BANDA', codigo, atualizanome, atualizatipo);
-inserirDados('CANTOR_BANDA', nome, tipo)
-selecionar()
 
+  function fechar(){
+    db.close((err) => {
+      if (err) {
+        console.error(err.message);
+      }
+      console.log('Conexão com o banco de dados fechada.');
+    });
 
-
-
-
-
-
-
-db.close((err) => {
-    if (err) {
-      console.error(err.message);
-    }
-    console.log('Conexão com o banco de dados fechada.');
-  });
+  }

@@ -1,0 +1,23 @@
+{
+  "name": "tempolivre",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliverprogramador/TempoLivre.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oliverprogramador/TempoLivre/issues"
+  },
+  "homepage": "https://github.com/oliverprogramador/TempoLivre#readme",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
